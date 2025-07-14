@@ -1,0 +1,25 @@
+.card {
+  border: 1px solid var(--text-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--background-color);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25px;
+}
+
+.card button {
+  width: fit-content;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
