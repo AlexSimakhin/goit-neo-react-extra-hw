@@ -21,7 +21,13 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <div
+      role="status"
+      aria-live="polite"
+      style={{ textAlign: 'center', padding: '2rem' }}
+    >
+      Refreshing user...
+    </div>
   ) : (
     <>
       <Suspense fallback={<div>Loading...</div>}>

@@ -7,7 +7,7 @@ export const useContactDelete = () => {
   const dispatch = useDispatch();
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const deleteContactById = async (contactId, contactName) => {
+  const deleteContactById = async contactId => {
     setIsDeleting(true);
     try {
       await dispatch(deleteContact(contactId)).unwrap();

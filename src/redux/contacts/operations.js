@@ -42,7 +42,7 @@ export const updateContact = createAsyncThunk(
   'contacts/updateContact',
   async ({ contactId, contactData }, thunkAPI) => {
     try {
-      const { data } = await api.patch(`/contacts/${contactId}`, contactData);
+      const { data } = await api.put(`/contacts/${contactId}`, contactData);
       return data;
     } catch (error) {
       return handleAsyncThunkError(error, thunkAPI);

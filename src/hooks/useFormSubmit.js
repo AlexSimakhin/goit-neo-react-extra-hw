@@ -21,12 +21,21 @@ export const useFormSubmit = (
         actions.resetForm();
       }
     } catch (error) {
-      toast.error(`${errorMessage}: ${error}`);
+      const errorMsg = error?.message || error || 'Unknown error';
+      toast.error(`${errorMessage}: ${errorMsg}`);
 
-      if (actions?.setFieldError) {
+      // Handle structured field errors if available
+      if (actions?.setFieldError && error?.fieldErrors) {
+        Object.entries(error.fieldErrors).forEach(([field, message]) => {
+          if (Object.prototype.hasOwnProperty.call(values, field)) {
+            actions.setFieldError(field, message);
+          }
+        });
+      } else if (actions?.setFieldError && typeof errorMsg === 'string') {
+        // Fallback: try to match error message to field names
         Object.keys(values).forEach(field => {
-          if (error.toLowerCase().includes(field.toLowerCase())) {
-            actions.setFieldError(field, error);
+          if (errorMsg.toLowerCase().includes(field.toLowerCase())) {
+            actions.setFieldError(field, errorMsg);
           }
         });
       }

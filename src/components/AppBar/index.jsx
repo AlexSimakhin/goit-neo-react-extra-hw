@@ -27,7 +27,7 @@ export default function AppBar() {
       <button
         className={css.toggleBtn}
         onClick={toggleHeader}
-        aria-label={isExpanded ? 'Свернуть хедер' : 'Развернуть хедер'}
+        aria-label={isExpanded ? 'Collapse header' : 'Expand header'}
       >
         <span className={`${css.toggleIcon} ${!isExpanded ? css.rotated : ''}`}>
           ▲
