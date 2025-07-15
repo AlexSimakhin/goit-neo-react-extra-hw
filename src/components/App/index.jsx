@@ -6,7 +6,6 @@ import { selectIsRefreshing } from '@/redux/auth/selectors';
 import { PrivateRoute } from '@/components/PrivateRoute';
 import { RestrictedRoute } from '@/components/RestrictedRoute';
 import Layout from '@/components/Layout';
-import ThemeToggle from '@/components/ThemeToggle';
 
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
@@ -25,7 +24,6 @@ const App = () => {
     <b>Refreshing user...</b>
   ) : (
     <>
-      <ThemeToggle />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -33,19 +31,28 @@ const App = () => {
             <Route
               path="/register"
               element={
-                <RestrictedRoute redirectTo="/contacts" component={<RegistrationPage />} />
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<RegistrationPage />}
+                />
               }
             />
             <Route
               path="/login"
               element={
-                <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<LoginPage />}
+                />
               }
             />
             <Route
               path="/contacts"
               element={
-                <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<ContactsPage />}
+                />
               }
             />
           </Route>

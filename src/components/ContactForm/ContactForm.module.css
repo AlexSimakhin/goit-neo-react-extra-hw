@@ -5,7 +5,7 @@
   border: 1px solid var(--glass-border-strong);
   border-radius: 20px;
   padding: 2.5rem;
-  box-shadow: var(--glass-shadow-strong);
+  box-shadow: var(--glass-hover-shadow);
   max-width: 450px;
   margin: 0 auto 2rem;
   display: flex;
@@ -14,17 +14,6 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-}
-
-.form::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--primary-gradient);
-  opacity: 0.8;
 }
 
 .form:hover {
@@ -67,7 +56,7 @@
   outline: none;
   border-color: rgba(102, 126, 234, 0.6);
   background: var(--glass-bg-strong);
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(102, 126, 234, 0.15),
     var(--glass-shadow);
   transform: translateY(-2px) scale(1.02);
@@ -106,7 +95,7 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow-strong);
+  box-shadow: var(--glass-hover-shadow);
   position: relative;
   overflow: hidden;
   align-self: center;
@@ -121,7 +110,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
   transition: left 0.6s ease;
   z-index: 1;
 }
@@ -154,15 +148,15 @@
 @media (max-width: 768px) {
   .form {
     padding: 2rem;
-    margin: 0 0 1.5rem;
+    margin: 0 auto 1.5rem;
     gap: 1.5rem;
   }
-  
+
   .field input {
     padding: 0.875rem 1rem;
     font-size: 0.925rem;
   }
-  
+
   .button {
     padding: 0.875rem 2rem;
     font-size: 1rem;
@@ -174,12 +168,12 @@
     padding: 1.5rem;
     gap: 1.25rem;
   }
-  
+
   .field input {
     padding: 0.75rem 0.875rem;
     font-size: 0.9rem;
   }
-  
+
   .button {
     padding: 0.75rem 1.75rem;
     font-size: 0.95rem;

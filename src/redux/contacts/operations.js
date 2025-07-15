@@ -1,14 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { api } from '../auth/operations';
+
+const handleAsyncThunkError = (error, thunkAPI) => {
+  const message = error.response?.data?.message || error.message || 'Something went wrong';
+  return thunkAPI.rejectWithValue(message);
+};
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/contacts');
-      return response.data;
+      const { data } = await api.get('/contacts');
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return handleAsyncThunkError(error, thunkAPI);
     }
   }
 );
@@ -17,10 +22,10 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const response = await axios.post('/contacts', contact);
-      return response.data;
+      const { data } = await api.post('/contacts', contact);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return handleAsyncThunkError(error, thunkAPI);
     }
   }
 );
@@ -29,10 +34,22 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      await axios.delete(`/contacts/${contactId}`);
+      await api.delete(`/contacts/${contactId}`);
       return contactId;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return handleAsyncThunkError(error, thunkAPI);
+    }
+  }
+);
+
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  async ({ contactId, contactData }, thunkAPI) => {
+    try {
+      const { data } = await api.patch(`/contacts/${contactId}`, contactData);
+      return data;
+    } catch (error) {
+      return handleAsyncThunkError(error, thunkAPI);
     }
   }
 );

@@ -2,19 +2,25 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
-import { FaUser, FaPhone } from 'react-icons/fa';
+import { FaUser, FaPhone, FaEdit } from 'react-icons/fa';
 import { deleteContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 import Modal from '../Modal';
 import ConfirmDialog from '../ConfirmDialog';
+import EditContactForm from '../EditContactForm';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const { id, name, number } = contact;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleDeleteClick = () => {
-    setIsModalOpen(true);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleEditClick = () => {
+    setIsEditModalOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -23,14 +29,18 @@ const Contact = ({ contact }) => {
       .then(() => {
         toast.success('Contact deleted successfully!');
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error(error);
       });
-    setIsModalOpen(false);
+    setIsDeleteModalOpen(false);
   };
 
   const handleCancelDelete = () => {
-    setIsModalOpen(false);
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleCloseEdit = () => {
+    setIsEditModalOpen(false);
   };
 
   return (
@@ -44,12 +54,21 @@ const Contact = ({ contact }) => {
             <FaPhone /> {number}
           </p>
         </div>
-        <button onClick={handleDeleteClick} className={css.deleteBtn}>
-          Delete
-        </button>
+        <div className={css.actions}>
+          <button onClick={handleEditClick} className={css.editBtn}>
+            <FaEdit /> Edit
+          </button>
+          <button onClick={handleDeleteClick} className={css.deleteBtn}>
+            Delete
+          </button>
+        </div>
       </div>
-      
-      <Modal isOpen={isModalOpen} onClose={handleCancelDelete}>
+
+      <Modal isOpen={isEditModalOpen} onClose={handleCloseEdit}>
+        <EditContactForm contact={contact} onClose={handleCloseEdit} />
+      </Modal>
+
+      <Modal isOpen={isDeleteModalOpen} onClose={handleCancelDelete}>
         <ConfirmDialog
           title="Delete Contact"
           message={`Are you sure you want to delete "${name}"? This action cannot be undone.`}

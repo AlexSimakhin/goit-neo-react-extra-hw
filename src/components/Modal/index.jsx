@@ -3,7 +3,7 @@ import css from './Modal.module.css';
 
 export default function Modal({ isOpen, onClose, children }) {
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = e => {
       if (e.key === 'Escape') {
         onClose();
       }
@@ -22,7 +22,7 @@ export default function Modal({ isOpen, onClose, children }) {
 
   if (!isOpen) return null;
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
     }

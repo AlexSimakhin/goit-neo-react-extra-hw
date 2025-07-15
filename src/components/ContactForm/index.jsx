@@ -10,7 +10,7 @@ const schema = Yup.object({
   name: Yup.string().min(3).max(50).required('Required'),
   number: Yup.string()
     .matches(
-      /^[\d\s\-\+\(\)]+$/,
+      /^[\d\s\-+()]+$/,
       'Phone number can only contain digits, spaces, dashes, plus sign and parentheses'
     )
     .min(7, 'Phone number must be at least 7 characters')
@@ -30,7 +30,7 @@ const ContactForm = () => {
         toast.success('Contact added successfully!');
         actions.resetForm();
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error(error);
       });
   };
