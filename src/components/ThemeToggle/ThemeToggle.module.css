@@ -1,6 +1,7 @@
 .themeToggle {
   position: relative;
   display: flex;
+  flex: none;
   justify-content: center;
   align-items: center;
   width: 32px;

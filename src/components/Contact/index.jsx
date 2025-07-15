@@ -5,7 +5,7 @@ import { FaUser, FaPhone, FaEdit } from 'react-icons/fa';
 import Modal from '../Modal';
 import ConfirmDialog from '../ConfirmDialog';
 import EditContactForm from '../EditContactForm';
-import { useContactDelete } from '../../hooks/useContactDelete';
+import { useContactDelete } from '@/hooks/useContactDelete';
 
 const Contact = ({ contact }) => {
   const { id, name, number } = contact;

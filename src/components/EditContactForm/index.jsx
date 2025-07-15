@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateContact } from '../../redux/contacts/operations';
-import { selectIsLoading } from '../../redux/contacts/selectors';
+import { updateContact } from '@/redux/contacts/operations';
+import { selectIsLoading } from '@/redux/contacts/selectors';
 import toast from 'react-hot-toast';
 import css from './EditContactForm.module.css';
 import { contactSchema } from '../../utils/validationSchemas';

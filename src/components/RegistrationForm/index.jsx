@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../redux/auth/operations';
-import { selectIsLoading } from '../../redux/auth/selectors';
+import { register } from '@/redux/auth/operations';
+import { selectIsLoading } from '@/redux/auth/selectors';
 import toast from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
 import { authRegistrationSchema } from '../../utils/validationSchemas';

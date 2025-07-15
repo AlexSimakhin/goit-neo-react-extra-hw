@@ -2,18 +2,41 @@
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (width >= 481px) {
+/* Планшеты и десктоп - обычная горизонтальная навигация */
+@media (width >= 769px) {
+  .nav {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+@media (width >= 481px) and (width < 769px) {
   .nav {
     gap: 1.5rem;
   }
 }
 
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (width >= 481px) {
+  .navLinks {
+    gap: 1.5rem;
+  }
+}
+
 @media (width >= 769px) {
-  .nav {
+  .navLinks {
     gap: 2rem;
   }
 }

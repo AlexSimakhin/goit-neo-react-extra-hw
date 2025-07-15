@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import css from './ContactForm.module.css';
 import { useId } from 'react';
-import { addContact } from '../../redux/contacts/operations';
+import { addContact } from '@/redux/contacts/operations';
 import toast from 'react-hot-toast';
 import { contactSchema } from '../../utils/validationSchemas';
 
