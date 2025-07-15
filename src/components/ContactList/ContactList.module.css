@@ -1,11 +1,19 @@
 .list {
   list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
 
-  li {
-    flex: 0 1 auto;
+.list li {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
