@@ -14,9 +14,9 @@ export default function Layout() {
         position="top-right"
         toastOptions={{
           style: {
-            background: 'var(--glass-bg)',
+            background: 'var(--background-overlay-strong)',
             backdropFilter: 'var(--backdrop-blur)',
-            border: '1px solid var(--glass-border)',
+            border: '1px solid var(--border-strong)',
             color: 'var(--text-color)',
             borderRadius: '12px',
             boxShadow: 'var(--glass-shadow)',

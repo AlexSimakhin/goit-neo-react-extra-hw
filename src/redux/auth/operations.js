@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { handleAsyncThunkError } from '../../utils/asyncThunkHelpers';
 
 const api = axios.create({
   baseURL: 'https://connections-api.goit.global',
@@ -12,12 +13,6 @@ export const token = {
   unset() {
     api.defaults.headers.common.Authorization = '';
   },
-};
-
-const handleAsyncThunkError = (error, thunkAPI) => {
-  const message =
-    error.response?.data?.message || error.message || 'Something went wrong';
-  return thunkAPI.rejectWithValue(message);
 };
 
 export const register = createAsyncThunk(

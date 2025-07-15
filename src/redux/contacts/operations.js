@@ -1,11 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../auth/operations';
-
-const handleAsyncThunkError = (error, thunkAPI) => {
-  const message =
-    error.response?.data?.message || error.message || 'Something went wrong';
-  return thunkAPI.rejectWithValue(message);
-};
+import { handleAsyncThunkError } from '../../utils/asyncThunkHelpers';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',

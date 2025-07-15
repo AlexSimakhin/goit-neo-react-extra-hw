@@ -2,18 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/selectors';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
-
-const RegistrationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string().min(7, 'Too Short!').required('Required'),
-});
+import { authRegistrationSchema } from '../../utils/validationSchemas';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -26,7 +17,7 @@ export default function RegistrationForm() {
         email: '',
         password: '',
       }}
-      validationSchema={RegistrationSchema}
+      validationSchema={authRegistrationSchema}
       onSubmit={(values, actions) => {
         dispatch(register(values))
           .unwrap()

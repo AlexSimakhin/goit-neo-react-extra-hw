@@ -36,17 +36,17 @@
       rgb(196 181 253 / 60%) 75%,
       rgb(252 231 243 / 80%) 100%
     );
-  --glass-bg: rgb(255 255 255 / 15%);
-  --glass-bg-strong: rgb(255 255 255 / 25%);
-  --glass-border: rgb(255 255 255 / 30%);
-  --glass-border-strong: rgb(255 255 255 / 40%);
-  --glass-shadow: 0 4px 16px rgb(31 38 135 / 15%);
-  --glass-shadow-strong: 0 6px 24px rgb(31 38 135 / 25%);
-  --glass-hover-shadow: 0 8px 32px rgb(31 38 135 / 20%);
-  --text-color: #414141;
-  --text-light: #718096;
-  --text-muted: #a0aec0;
-  --input-bg: rgb(255 255 255 / 25%);
+  --glass-bg: rgb(255 255 255 / 65%);
+  --glass-bg-strong: rgb(255 255 255 / 85%);
+  --glass-border: rgb(0 0 0 / 15%);
+  --glass-border-strong: rgb(0 0 0 / 25%);
+  --glass-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  --glass-shadow-strong: 0 6px 24px rgb(0 0 0 / 15%);
+  --glass-hover-shadow: 0 8px 32px rgb(0 0 0 / 12%);
+  --text-color: #2d3748;
+  --text-light: #4a5568;
+  --text-muted: #718096;
+  --input-bg: rgb(255 255 255 / 70%);
   --primary-gradient: linear-gradient(
     135deg,
     #1e3a8a 0%,
@@ -71,8 +71,13 @@
     #1d4ed8 50%,
     #2563eb 100%
   );
-  --button-secondary: rgb(255 255 255 / 20%);
-  --button-danger: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  --button-secondary: rgb(255 255 255 / 90%);
+  --button-danger: linear-gradient(
+    135deg,
+    #dc2626 0%,
+    #ef4444 50%,
+    #f87171 100%
+  );
   --success-color: #48bb78;
   --error-color: #f56565;
   --warning-color: #ed8936;
@@ -84,6 +89,11 @@
   --scrollbar-thumb-hover: rgb(102 126 234 / 50%);
   --scrollbar-thumb-active: rgb(102 126 234 / 70%);
   --noise-overlay: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  --border-subtle: rgb(0 0 0 / 8%);
+  --border-medium: rgb(0 0 0 / 12%);
+  --border-strong: rgb(0 0 0 / 20%);
+  --background-overlay: rgb(255 255 255 / 65%);
+  --background-overlay-strong: rgb(255 255 255 / 80%);
 
   color: var(--text-color);
   font-family: Montserrat, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -170,6 +180,11 @@
   --scrollbar-thumb-hover: rgb(186 230 253 / 60%);
   --scrollbar-thumb-active: rgb(186 230 253 / 80%);
   --noise-overlay: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E");
+  --border-subtle: rgb(255 255 255 / 8%);
+  --border-medium: rgb(255 255 255 / 15%);
+  --border-strong: rgb(255 255 255 / 25%);
+  --background-overlay: rgb(255 255 255 / 8%);
+  --background-overlay-strong: rgb(255 255 255 / 12%);
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -334,8 +349,8 @@ body {
 .glass {
   position: relative;
   overflow: hidden;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--background-overlay);
+  border: 1px solid var(--border-medium);
   border-radius: 20px;
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--backdrop-blur);
@@ -346,15 +361,15 @@ body {
   position: relative;
   padding: 1rem;
   overflow: hidden;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--background-overlay);
+  border: 1px solid var(--border-medium);
   border-radius: 10px;
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--backdrop-blur);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    border-color: var(--glass-border-strong);
+    border-color: var(--border-strong);
     box-shadow: var(--glass-hover-shadow);
     transform: translateY(-4px) scale(1.02);
   }
@@ -368,8 +383,8 @@ body {
 }
 
 .glass-strong {
-  background: var(--glass-bg-strong);
-  border: 1px solid var(--glass-border-strong);
+  background: var(--background-overlay-strong);
+  border: 1px solid var(--border-strong);
   box-shadow: var(--glass-shadow-strong);
   backdrop-filter: var(--backdrop-blur-strong);
 }
@@ -381,7 +396,7 @@ button {
   font: inherit;
   font-size: 0.875rem;
   font-weight: 500;
-  border: none;
+  border: 1px solid var(--border-medium);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -405,6 +420,10 @@ button {
 
   &:hover::before {
     left: 100%;
+  }
+
+  &:hover {
+    border-color: var(--border-strong);
   }
 }
 
@@ -481,15 +500,15 @@ select {
   color: var(--text-color);
   font-family: inherit;
   font-size: 0.875rem;
-  background: var(--input-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--background-overlay);
+  border: 1px solid var(--border-medium);
   border-radius: 10px;
   backdrop-filter: var(--backdrop-blur);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    background: var(--glass-bg-strong);
-    border-color: rgb(102 126 234 / 60%);
+    background: var(--background-overlay-strong);
+    border-color: var(--border-strong);
     box-shadow:
       0 0 0 3px rgb(102 126 234 / 10%),
       var(--glass-shadow);

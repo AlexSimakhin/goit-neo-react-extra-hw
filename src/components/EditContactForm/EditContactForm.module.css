@@ -33,10 +33,12 @@
   padding: 10px;
   color: var(--text-color);
   font-size: 14px;
-  background-color: var(--input-bg, #fff);
-  border: 2px solid var(--border-color, #e1e5e9);
+  background: var(--background-overlay);
+  border: 2px solid var(--border-medium);
   border-radius: 6px;
-  transition: border-color 0.2s ease;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--backdrop-blur);
+  transition: all 0.2s ease;
 
   @media (width >= 481px) {
     padding: 12px;
@@ -46,18 +48,22 @@
 }
 
 .field:focus {
-  border-color: var(--primary-color, #007bff);
-  box-shadow: 0 0 0 3px rgb(0 123 255 / 10%);
+  background: var(--background-overlay-strong);
+  border-color: var(--border-strong);
+  box-shadow:
+    0 0 0 3px rgb(59 130 246 / 10%),
+    var(--glass-hover-shadow);
   outline: none;
+  transform: translateY(-2px) scale(1.02);
 }
 
 .fieldError {
-  border-color: var(--error-color, #dc3545);
+  border-color: var(--error-color);
 }
 
 .error {
   margin-top: 4px;
-  color: var(--error-color, #dc3545);
+  color: var(--error-color);
   font-size: 12px;
 }
 
@@ -81,32 +87,42 @@
 
 .submitBtn {
   color: white;
-  background-color: var(--primary-color, #007bff);
+  background: var(--button-primary);
+  border: 1px solid transparent;
+  box-shadow: var(--glass-shadow);
 }
 
 .submitBtn:hover:not(:disabled) {
-  background-color: var(--primary-hover, #0056b3);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  box-shadow: var(--glass-hover-shadow);
+  filter: brightness(1.1);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .submitBtn:disabled {
-  background-color: var(--disabled-color, #6c757d);
+  background: var(--text-muted);
+  filter: none;
   transform: none;
   cursor: not-allowed;
 }
 
 .cancelBtn {
-  color: white;
-  background-color: var(--secondary-color, #6c757d);
+  color: var(--text-color);
+  background: var(--button-secondary);
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--backdrop-blur);
 }
 
 .cancelBtn:hover:not(:disabled) {
-  background-color: var(--secondary-hover, #545b62);
-  transform: translateY(-1px);
+  background: var(--background-overlay-strong);
+  border-color: var(--border-strong);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .cancelBtn:disabled {
   opacity: 0.6;
+  filter: none;
   transform: none;
   cursor: not-allowed;
 }

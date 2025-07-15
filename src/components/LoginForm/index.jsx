@@ -2,18 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operations';
 import { selectIsLoading, selectAuthError } from '../../redux/auth/selectors';
-import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import css from './LoginForm.module.css';
-
-const LoginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid email format')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(7, 'Password must be at least 7 characters')
-    .required('Password is required'),
-});
+import { authLoginSchema } from '../../utils/validationSchemas';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -42,7 +33,7 @@ export default function LoginForm() {
         email: '',
         password: '',
       }}
-      validationSchema={LoginSchema}
+      validationSchema={authLoginSchema}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting, errors, touched }) => (

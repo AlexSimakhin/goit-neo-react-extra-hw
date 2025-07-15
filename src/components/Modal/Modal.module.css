@@ -10,7 +10,6 @@
   height: 100%;
   padding: 1rem;
   background: rgb(0 0 0 / 70%);
-  backdrop-filter: blur(12px);
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -23,12 +22,10 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    backdrop-filter: blur(0);
   }
 
   to {
     opacity: 1;
-    backdrop-filter: blur(12px);
   }
 }
 
@@ -43,9 +40,11 @@
   background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border-strong);
   border-radius: 16px;
-  box-shadow: var(--glass-hover-shadow);
-  backdrop-filter: var(--backdrop-blur-strong);
   animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] .modal {
+  backdrop-filter: var(--backdrop-blur-strong);
 }
 
 @media (width >= 481px) {
@@ -89,6 +88,7 @@
   align-items: center;
   width: 30px;
   height: 30px;
+  padding: 0;
   color: var(--text-color);
   font-size: 1.125rem;
   font-weight: 300;
@@ -96,7 +96,6 @@
   background: var(--button-secondary);
   border: 1px solid var(--glass-border);
   border-radius: 50%;
-  backdrop-filter: var(--backdrop-blur);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
