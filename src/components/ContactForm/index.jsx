@@ -1,21 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { useId } from 'react';
-import { addContact } from '@/redux/contactsOps';
-
-const schema = Yup.object({
-  name: Yup.string().min(3).max(50).required('Required'),
-  number: Yup.string()
-    .matches(
-      /^[\d\s\-\+\(\)]+$/,
-      'Phone number can only contain digits, spaces, dashes, plus sign and parentheses'
-    )
-    .min(7, 'Phone number must be at least 7 characters')
-    .max(15, 'Phone number must be at most 15 characters')
-    .required('Required'),
-});
+import { addContact } from '@/redux/contacts/operations';
+import toast from 'react-hot-toast';
+import { contactSchema } from '../../utils/validationSchemas';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -23,15 +12,22 @@ const ContactForm = () => {
   const numberId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
-    actions.resetForm();
+    dispatch(addContact(values))
+      .unwrap()
+      .then(() => {
+        toast.success('Contact added successfully!');
+        actions.resetForm();
+      })
+      .catch(error => {
+        toast.error(error);
+      });
   };
 
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
       onSubmit={handleSubmit}
-      validationSchema={schema}
+      validationSchema={contactSchema}
     >
       <Form className={css.form}>
         <div className={css.field}>

@@ -1,0 +1,73 @@
+.dialog {
+  padding: 1rem;
+  text-align: center;
+}
+
+.title {
+  color: #1e3a8a;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (width >= 481px) {
+    font-size: 1.5rem;
+  }
+}
+
+.message {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+
+  @media (width >= 769px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.cancelBtn {
+  padding: 0.75rem 1.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+  background: var(--button-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  backdrop-filter: var(--backdrop-blur);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--glass-bg);
+    transform: translateY(-2px);
+  }
+}
+
+.confirmBtn {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  overflow: hidden;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  border: 1px solid rgb(245 101 101 / 30%);
+  border-radius: 12px;
+  box-shadow: var(--shadow-glass);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgb(245 101 101 / 40%);
+    transform: translateY(-2px);
+  }
+}
