@@ -82,7 +82,11 @@ export default function RegistrationForm() {
               className={css.error}
             />
           </label>
-          <button type="submit" className={css.btn} disabled={isSubmitting || isLoading}>
+          <button
+            type="submit"
+            className={css.btn}
+            disabled={isSubmitting || isLoading}
+          >
             {isSubmitting || isLoading ? 'Registering...' : 'Register'}
           </button>
         </Form>

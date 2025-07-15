@@ -8,11 +8,21 @@ export default function Navigation() {
 
   return (
     <nav className={css.nav}>
-      <NavLink className={css.link} to="/">
+      <NavLink
+        className={({ isActive }) =>
+          `${css.link} ${isActive ? css.active : ''}`
+        }
+        to="/"
+      >
         Home
       </NavLink>
       {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
+        <NavLink
+          className={({ isActive }) =>
+            `${css.link} ${isActive ? css.active : ''}`
+          }
+          to="/contacts"
+        >
           Contacts
         </NavLink>
       )}

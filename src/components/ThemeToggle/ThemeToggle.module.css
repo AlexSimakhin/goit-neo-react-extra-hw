@@ -1,39 +1,43 @@
 .themeToggle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--text-color);
+  font-size: 0.8rem;
   background: var(--glass-bg);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--glass-border);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1rem;
   box-shadow: var(--glass-shadow);
-  color: var(--text-color);
-  position: relative;
+  backdrop-filter: var(--backdrop-blur);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
 
-  @media (max-width: 768px) {
+@media (width >= 481px) {
+  .themeToggle {
     width: 36px;
     height: 36px;
     font-size: 0.9rem;
   }
+}
 
-  @media (max-width: 480px) {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
+@media (width >= 769px) {
+  .themeToggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
 
 .themeToggle:hover {
-  transform: scale(1.1) rotate(180deg);
   background: var(--glass-bg-strong);
   border-color: var(--glass-border-strong);
   box-shadow: var(--glass-hover-shadow);
+  transform: scale(1.1) rotate(180deg);
 }
 
 .themeToggle:active {

@@ -23,10 +23,12 @@ export default function EditContactForm({ contact, onClose }) {
 
   const handleSubmit = async (values, actions) => {
     try {
-      await dispatch(updateContact({ 
-        contactId: contact.id, 
-        contactData: values 
-      })).unwrap();
+      await dispatch(
+        updateContact({
+          contactId: contact.id,
+          contactData: values,
+        })
+      ).unwrap();
       toast.success(`Contact "${values.name}" updated successfully!`);
       onClose();
     } catch {
@@ -57,7 +59,7 @@ export default function EditContactForm({ contact, onClose }) {
             />
             <ErrorMessage name="name" component="div" className={css.error} />
           </label>
-          
+
           <label className={css.label}>
             <span>Number</span>
             <Field
@@ -68,18 +70,18 @@ export default function EditContactForm({ contact, onClose }) {
             />
             <ErrorMessage name="number" component="div" className={css.error} />
           </label>
-          
+
           <div className={css.buttons}>
-            <button 
-              type="submit" 
-              className={css.submitBtn} 
+            <button
+              type="submit"
+              className={css.submitBtn}
               disabled={isSubmitting || isLoading}
             >
               {isSubmitting || isLoading ? 'Updating...' : 'Update Contact'}
             </button>
-            <button 
-              type="button" 
-              className={css.cancelBtn} 
+            <button
+              type="button"
+              className={css.cancelBtn}
               onClick={onClose}
               disabled={isSubmitting || isLoading}
             >

@@ -1,53 +1,52 @@
 .dialog {
-  text-align: center;
   padding: 1rem;
+  text-align: center;
 }
 
 .title {
-  font-size: 1.5rem;
+  color: #1e3a8a;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1e3a8a; /* Fallback color */
+  text-shadow: 0 1px 3px rgb(0 0 0 / 30%);
   background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 20%));
+  -webkit-text-fill-color: transparent;
 
-  @media (max-width: 480px) {
-    font-size: 1.25rem;
+  @media (width >= 481px) {
+    font-size: 1.5rem;
   }
 }
 
 .message {
-  color: var(--text-light);
   margin-bottom: 2rem;
+  color: var(--text-light);
   font-size: 1rem;
   line-height: 1.6;
 }
 
 .buttons {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   justify-content: center;
+  gap: 0.75rem;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0.75rem;
+  @media (width >= 769px) {
+    flex-direction: row;
+    gap: 1rem;
   }
 }
 
 .cancelBtn {
-  background: var(--button-secondary);
-  color: var(--text-color);
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
+  color: var(--text-color);
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background: var(--button-secondary);
   border: 1px solid var(--glass-border);
+  border-radius: 12px;
   backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     background: var(--glass-bg);
@@ -56,20 +55,20 @@
 }
 
 .confirmBtn {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(245, 101, 101, 0.3);
-  box-shadow: var(--shadow-glass);
   position: relative;
+  padding: 0.75rem 1.5rem;
   overflow: hidden;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  border: 1px solid rgb(245 101 101 / 30%);
+  border-radius: 12px;
+  box-shadow: var(--shadow-glass);
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
+    box-shadow: 0 12px 40px rgb(245 101 101 / 40%);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(245, 101, 101, 0.4);
   }
 }

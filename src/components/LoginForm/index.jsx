@@ -58,7 +58,7 @@ export default function LoginForm() {
             />
             <ErrorMessage name="email" component="div" className={css.error} />
           </label>
-          
+
           <label className={css.label}>
             <span>Password</span>
             <Field
@@ -74,15 +74,15 @@ export default function LoginForm() {
               className={css.error}
             />
           </label>
-          
-          <button 
-            type="submit" 
-            className={css.btn} 
+
+          <button
+            type="submit"
+            className={css.btn}
             disabled={isSubmitting || isLoading}
           >
             {isSubmitting || isLoading ? 'Logging in...' : 'Log In'}
           </button>
-          
+
           {error && (
             <div className={css.generalError} role="alert">
               {error}
